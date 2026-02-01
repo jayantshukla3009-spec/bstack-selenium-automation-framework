@@ -10,7 +10,7 @@ public class WebDriverFactory {
 public static WebDriver createDriver(String browser) {
 	WebDriver driver;
 	if(browser.equalsIgnoreCase("chrome")) {
-		WebDriverManager.chromedriver().setup();
+		WebDriverManager.chromedriver().setup();// download the matching browser version
 		driver = new ChromeDriver();
 	}else if(browser.equalsIgnoreCase("edge")) {
 		WebDriverManager.edgedriver().setup();
