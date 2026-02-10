@@ -2,4 +2,9 @@
         .project
         .settings/
         target/
-        
+test-output/
+Receipts/
+
+*.log
+*.tmp
+*.crdownload
