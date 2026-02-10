@@ -12,7 +12,7 @@ import com.jayant.framework.utils.WebDriverFactory;
 
 
 public class BaseTest {
-protected WebDriver driver;
+protected static WebDriver driver;
 @BeforeMethod
 protected void setUp() throws IOException {
 	Properties pro = ConfigReader.reader();
@@ -20,6 +20,9 @@ protected void setUp() throws IOException {
 	 driver.get(pro.getProperty("url"));
 	 driver.manage().window().maximize();
 	
+}
+public static WebDriver getDriver() {
+	return driver;
 }
 @AfterMethod
 protected void tearDown() {

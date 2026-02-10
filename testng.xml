@@ -1,6 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Bstack Automation Suite">
+<listeners>
+    <listener class-name="com.jayant.listener.Listener"/>
+</listeners>
 
     <test name="Login Tests">
         <classes>
