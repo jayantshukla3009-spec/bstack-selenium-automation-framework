@@ -1,227 +1,247 @@
 🛒 BStack E-Commerce Automation Testing Framework
 📌 Project Overview
 
-This project is an end-to-end Automation Testing Framework developed for the BrowserStack Demo E-Commerce Application (bstackdemo.com). The framework automates core shopping workflows including authentication, product filtering, cart validation, and checkout functionality.
+This project is an End-to-End Automation Testing Framework developed for the BrowserStack Demo E-Commerce Application.
 
-The framework is designed using Java, Selenium WebDriver, TestNG, and Maven, following the Page Object Model (POM) architecture to ensure scalability, maintainability, and reusable test components.
+The framework automates complete shopping workflows including:
 
-This project simulates real-world enterprise automation framework design including centralized configuration handling, dynamic waits, reporting integration, and cross-browser support.
+User Authentication
 
-🌐 Application Under Test
+Product Filtering & Catalog Validation
+
+Cart Functional Validation
+
+Checkout & Order Placement
+
+Receipt Download Verification
+
+The framework is designed using Java, Selenium WebDriver, TestNG, and Maven, following Page Object Model (POM) and modern Thread-Safe Automation Architecture to ensure scalability, maintainability, and parallel test execution support.
+
+🌐 Application Under Test (AUT)
 
 BrowserStack Demo Store
-https://bstackdemo.com/
+👉 https://bstackdemo.com/
 
-The application provides typical e-commerce functionalities including:
+The application simulates real-world e-commerce workflows including:
 
-User login and authentication
+User Login & Authentication
 
-Product catalog browsing and filtering
+Product Browsing & Filtering
 
-Add to cart and cart validation
+Add to Cart & Cart Management
 
-Checkout and order placement
+Checkout & Order Placement
 
-Receipt download functionality
+Order Receipt Download
 
-🎯 Automation Scope
-🔐 Login Module
+🚀 Framework Key Highlights
+✔ Thread-Safe WebDriver Architecture
 
-Validate login with valid credentials
+Implemented ThreadLocal WebDriver
 
-Validate login with invalid credentials
+Enables safe parallel execution
 
-Validate login with blank credentials
+Ensures complete test isolation
 
-Verify error message handling
+✔ Parallel Execution Support
 
-Data-driven login execution using TestNG DataProvider
+TestNG parallel class execution
 
-🛍 Product Module
+Multiple browser instances run simultaneously
 
-Verify product listing display
+Improved execution speed & scalability
 
-Validate product filtering based on brand selection
+✔ Page Object Model (POM)
 
-🛒 Cart Module
+Separation of locators and business logic
 
-Add single product to cart
+Improves maintainability and reusability
 
-Add multiple products to cart
+Supports scalable test design
 
-Validate cart item count
+✔ Config-Driven Framework
 
-Verify subtotal calculation against individual item prices
+Centralized configuration via config.properties
 
-Remove item from cart and validate updated subtotal
+Supports dynamic browser selection
 
-Verify cart item name validation
-
-💳 Checkout Module
-
-Validate checkout workflow with valid shipping details
-
-Verify order summary and total price validation
-
-Validate successful order placement
-
-Automate receipt download functionality
-
-Negative scenario – Checkout without adding items
-
-Continue shopping workflow validation
-
-🛠 Tech Stack
-Category	Technology
-Programming Language	Java (JDK 17)
-Automation Tool	Selenium WebDriver
-Test Framework	TestNG
-Build Tool	Maven
-Design Pattern	Page Object Model (POM)
-Reporting	Extent Reports
-Synchronization	Explicit Wait Utilities
-Configuration	Properties File Handling
-Version Control	Git & GitHub
-Browser Management	WebDriverManager
-🏗 Framework Architecture Highlights
-✔ Page Object Model Implementation
-
-Separation of locators and test logic
-
-Improves scalability and maintainability
-
-✔ Config Driven Execution
-
-Browser selection managed via config.properties
-
-Centralized URL and wait configuration
+Centralized wait & environment handling
 
 ✔ Custom WebDriver Factory
 
-Dynamic browser initialization
+Dynamic driver initialization
 
-Chrome download directory configuration
+Multi-browser support (Chrome & Edge)
 
-Multi-browser support (Chrome, Edge)
+Download directory configuration
 
-✔ Wait Utility Framework
+✔ Advanced Synchronization Handling
 
-Centralized explicit wait methods
+Centralized Explicit Wait Utility
 
-Visibility, clickability, and text change synchronization
+Handles:
 
-✔ Thread-Safe Reporting Framework
+Visibility synchronization
 
-Extent Reports integrated using TestNG Listeners
+Clickability synchronization
 
-Step-level logging and failure screenshots
+Dynamic text update validation
 
-Automated HTML report generation
+✔ Reporting & Debugging Support
 
-✔ Failure Debugging Support
+Extent Reports Integration
 
-Automatic screenshot capture on test failure
+Screenshot capture on failure
 
-Report integration with screenshot evidence
+Step-level logging using TestNG Listeners
+
+✔ Failure Debugging Capability
+
+Automatic screenshot capture
+
+Detailed failure logging
+
+Execution report integration
+
+Framework Architecture
+Driver Lifecycle Flow
+Test Class
+   ↓
+BaseTest
+   ↓
+WebDriverFactory (ThreadLocal Driver)
+   ↓
+Page Classes & Utilities
+   ↓
+Driver Cleanup (Post Test Execution)
+
+Project Structure
 
 src/main/java
- ├── com.jayant.framework.base
+ ├── framework/base
  │    └── BaseTest.java
  │
- ├── com.jayant.framework.utils
+ ├── framework/utils
  │    ├── ConfigReader.java
  │    ├── WebDriverFactory.java
  │    ├── WaitUtils.java
  │    ├── ScreenShotUtils.java
  │    └── ExtentManager.java
  │
- └── com.jayant.pages
+ └── pages
       ├── LoginPage.java
       ├── ProductPage.java
       ├── CartPage.java
       └── CheckOutPage.java
 
 src/test/java
- ├── com.jayant.tests
+ ├── tests
  │    ├── LoginTest.java
  │    ├── ProductTest.java
  │    ├── CartTest.java
  │    └── CheckOutTest.java
  │
- ├── com.jayant.listener
+ ├── listener
  │    └── Listener.java
  │
- └── com.jayant.testdata
+ └── testdata
       └── LoginTestData.java
 
-src/main/resources
+resources
  └── config.properties
 
-ExtentReports/ – Execution reports  
-ScreenShots/ – Failure screenshots  
-Receipts/ – Downloaded order receipts  
-
-testng.xml – Test suite execution  
-pom.xml – Maven dependencies
-
-✅ Test Scenarios Covered
-Login
+🎯 Automation Coverage
+🔐 Login Module
 
 Valid login verification
 
-Invalid login verification
+Invalid login validation
 
 Blank credential validation
 
-Product
+Error message verification
+
+Data-Driven login execution using TestNG DataProvider
+
+🛍 Product Module
 
 Product listing verification
 
 Brand filter validation
 
-Cart
+🛒 Cart Module
 
-Add item validation
+Add single item to cart
+
+Add multiple items to cart
+
+Cart item count validation
+
+Subtotal calculation verification
 
 Remove item validation
 
-Cart subtotal verification
+Cart item name validation
 
-Cart item validation
+💳 Checkout Module
 
-Checkout
+Checkout workflow validation
 
-Complete checkout workflow
+Order summary validation
 
-Order summary verification
+Successful order placement
 
-Receipt download validation
+Receipt download automation
 
 Negative checkout validation
 
+Continue shopping workflow
+
+🛠 Technology Stack
+Category	Technology
+Programming Language	Java (JDK 17)
+Automation Tool	Selenium WebDriver
+Test Framework	TestNG
+Build Tool	Maven
+Design Pattern	Page Object Model
+Reporting	Extent Reports
+Synchronization	Explicit Wait Utilities
+Configuration	Properties File
+Version Control	Git & GitHub
+Browser Management	WebDriverManager
+⚡ Parallel Execution Support
+
+This framework supports parallel test execution using:
+
+TestNG Class Level Parallel Execution
+
+ThreadLocal WebDriver Implementation
+
+Test Isolation & Resource Safety
+
 📊 Reporting & Debugging Features
 
-Extent HTML execution reports
+Extent HTML Execution Reports
 
-Screenshot capture on failure
+Screenshot Capture on Failure
 
-Test lifecycle logging using TestNG Listener
+Test Lifecycle Logging
 
-Console logging for debugging
+Detailed Execution Logs
 
 ▶️ How To Execute The Project
-Prerequisites
+🔧 Prerequisites
 
 Java JDK 17+
 
 Maven Installed
 
-Chrome or Edge Browser
+Chrome / Edge Browser
 
-Git
+Git Installed
 
 Clone Repository
-git clone <repository-url>
+git clone https://github.com/jayantshukla3009-spec/bstack-selenium-automation-framework.git
 
 Run Using Maven
 mvn clean test
@@ -232,27 +252,40 @@ Execute:
 
 testng.xml
 
-🚀 Key Learning Outcomes
+📁 Generated Outputs
 
-Enterprise-level automation framework design
+ExtentReports/ → Execution Reports
 
-Config-driven execution implementation
+ScreenShots/ → Failure Screenshots
 
-Advanced synchronization handling
+Receipts/ → Downloaded Order Receipts
 
-Reporting and failure debugging integration
+🎓 Key Learning Outcomes
 
-E-commerce workflow automation testing
+Enterprise-Level Automation Framework Design
 
-Real-world Selenium + TestNG architecture implementation
+Thread-Safe Driver Architecture Implementation
+
+Parallel Execution Handling
+
+Config-Driven Test Execution
+
+Advanced Synchronization Handling
+
+Reporting & Failure Debugging Integration
+
+Real-World E-Commerce Workflow Testing
 
 👨‍💻 Author
 
 Jayant Kumar Shukla
-🔗 LinkedIn: https://www.linkedin.com/in/jayant-kumar-shukla
 
-🔗 GitHub: https://github.com/jayantshukla3009-spec
+🔗 LinkedIn
+https://www.linkedin.com/in/jayant-kumar-shukla
+
+🔗 GitHub
+https://github.com/jayantshukla3009-spec
 
 📎 Notes
 
-This project was developed as part of a capstone automation testing assignment to demonstrate real-time automation framework design and testing best practices.
+This project was developed as part of a capstone automation assignment to demonstrate real-time automation framework architecture, parallel execution design, and industry-level testing best practices.
