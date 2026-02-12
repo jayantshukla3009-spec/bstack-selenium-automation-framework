@@ -32,11 +32,11 @@ public class CheckOutPage {
 	private final By openEmptyCart = By.cssSelector("span[class*='bag--float-cart-closed']");
 	private final By continueShoppingCart = By.xpath("//div[contains(text(),'Continue Shopping')]");
 	public boolean isOrderSummaryDisplayed() {
-		return WaitUtils.waitForVisibility(driver, orderSummaryTitle).isDisplayed();
+		return WaitUtils.waitForVisibility(orderSummaryTitle).isDisplayed();
 	}
 
 	public void clickCheckOut() {
-		WaitUtils.waitForClickable(driver, checkOutButton).click();
+		WaitUtils.waitForClickable(checkOutButton).click();
 	}
 	public boolean checkOutButtonIsDisplayed() {
 		List<WebElement> elements = driver.findElements(checkOutButton);
@@ -44,27 +44,27 @@ public class CheckOutPage {
 	}
 
 	public void firstName(String firstName) {
-		WaitUtils.waitForClickable(driver, enterFirstName).sendKeys(firstName);
+		WaitUtils.waitForClickable(enterFirstName).sendKeys(firstName);
 	}
 
 	public void lastName(String lastName) {
-		WaitUtils.waitForClickable(driver, enterLastName).sendKeys(lastName);
+		WaitUtils.waitForClickable(enterLastName).sendKeys(lastName);
 	}
 
 	public void address(String address) {
-	WaitUtils.waitForClickable(driver, enterAddress).sendKeys(address);
+	WaitUtils.waitForClickable(enterAddress).sendKeys(address);
 	}
 
 	public void state(String state) {
-		WaitUtils.waitForClickable(driver, enterState).sendKeys(state);
+		WaitUtils.waitForClickable(enterState).sendKeys(state);
 	}
 
 	public void postalCode(String postalCode) {
-		WaitUtils.waitForClickable(driver, enterPostalCode).sendKeys(postalCode);
+		WaitUtils.waitForClickable(enterPostalCode).sendKeys(postalCode);
 	}
 
 	public void submitButton() {
-		WaitUtils.waitForClickable(driver, submitButton).click();
+		WaitUtils.waitForClickable(submitButton).click();
 	}
 
 	public List<String> getOrderSummaryItem() {
@@ -77,27 +77,27 @@ public class CheckOutPage {
 	}
 
 	public double getOrderSummaryTotal() {
-		String total = WaitUtils.waitForVisibility(driver, summaryTotalPrice).getText();
+		String total = WaitUtils.waitForVisibility(summaryTotalPrice).getText();
 		total = total.replaceAll("[^0-9.]", "").trim();
 		double orderSummaryTotal = Double.parseDouble(total);
 		return orderSummaryTotal;
 	}
 	
 	public boolean orderConfirmationMessage() {
-		return WaitUtils.waitForVisibility(driver, orderSuccessful).isDisplayed();
+		return WaitUtils.waitForVisibility(orderSuccessful).isDisplayed();
 	}
 	
 	public void downloadOrderReceipt() {
-		WaitUtils.waitForClickable(driver, downloadReceipt).click();
+		WaitUtils.waitForClickable(downloadReceipt).click();
 	}
 	public void continueShopping() {
-		WaitUtils.waitForClickable(driver, continueShoppingButton).click();
+		WaitUtils.waitForClickable(continueShoppingButton).click();
 	}
 	public void openCart() {
-		WaitUtils.waitForClickable(driver, openEmptyCart).click();
+		WaitUtils.waitForClickable(openEmptyCart).click();
 	}
 	public void cartContinueShopping() {
-		WaitUtils.waitForClickable(driver, continueShoppingCart).click();
+		WaitUtils.waitForClickable(continueShoppingCart).click();
 	}
 }
 

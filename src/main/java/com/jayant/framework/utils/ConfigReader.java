@@ -8,7 +8,7 @@ import java.util.Properties;
 public class ConfigReader {
 	static Properties prop;
 
-	public static Properties reader()  {
+	public static synchronized Properties reader()  {
 		if (prop == null) {
 			try {
 		File f1 = new File("src/main/resources/config.properties");
@@ -22,6 +22,10 @@ public class ConfigReader {
 		}
 			return prop;
 
+	}
+	
+	public static String get(String key) {
+		return ConfigReader.reader().getProperty(key);
 	}
 }
 			

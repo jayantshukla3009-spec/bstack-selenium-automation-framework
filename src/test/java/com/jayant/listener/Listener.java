@@ -24,7 +24,7 @@ public void onTestFailure(ITestResult result) {
 		
 		ExtentManager.getTest().fail(MarkupHelper.createLabel(result.getMethod().getMethodName()+"  - Test Failed", ExtentColor.RED));
 		ExtentManager.getTest().fail(result.getThrowable());
-		String screenShot = ScreenShotUtils.takeScreenShot(BaseTest.getDriver(), result.getMethod().getMethodName());
+		String screenShot = ScreenShotUtils.takeScreenShot(BaseTest.getDriverFromThread(), result.getMethod().getMethodName());
 		ExtentManager.getTest().addScreenCaptureFromPath(screenShot);
 		ExtentManager.removeTest();
 		

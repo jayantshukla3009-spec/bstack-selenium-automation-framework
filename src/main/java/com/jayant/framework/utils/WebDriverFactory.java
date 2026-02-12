@@ -12,9 +12,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebDriverFactory {
-public static WebDriver createDriver(String browser) {
-	WebDriver driver;
-	
+	 private static ThreadLocal<WebDriver>driver = new ThreadLocal<>();	
+public static void createDriver() {
+	String browser = ConfigReader.get("browser");
 	if(browser.equalsIgnoreCase("chrome")) {
 		WebDriverManager.chromedriver().setup();// download the matching browser version
 		String projectPath = System.getProperty("user.dir");
@@ -31,13 +31,22 @@ public static WebDriver createDriver(String browser) {
          ChromeOptions options = new ChromeOptions();
          options.setExperimentalOption("prefs", prefs);
 
-         driver = new ChromeDriver(options);
+         driver.set(new ChromeDriver());
 	}else if(browser.equalsIgnoreCase("edge")) {
 		WebDriverManager.edgedriver().setup();
-		driver = new EdgeDriver();
+		driver.set(new EdgeDriver());
 	}else {
 		throw new RuntimeException("Browser not supported:"+browser);
 	}
-		return driver;
+		
+}
+public static WebDriver getDriver() {
+	return driver.get();
+}
+public static void quitDriver() {
+	if(getDriver()!=null) {
+		getDriver().quit();
+		driver.remove();
+	}
 }
 }

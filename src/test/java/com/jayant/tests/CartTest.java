@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.jayant.framework.base.BaseTest;
+import com.jayant.framework.utils.WebDriverFactory;
 import com.jayant.pages.CartPage;
 
 
@@ -15,14 +16,14 @@ public class CartTest extends BaseTest {
 
 @Test
 public void addItem() {
-	CartPage cart = new CartPage(driver);
+	CartPage cart = new CartPage(WebDriverFactory.getDriver());
 	cart.addSingleItem();
 	String itemCount = cart.cartCount();
 	Assert.assertEquals(itemCount, "1");
 	}
 @Test
 public void addMultipleItems()  {
-	CartPage cart = new CartPage(driver);
+	CartPage cart = new CartPage(WebDriverFactory.getDriver());
 	cart.addMultipleItems();
 	String itemCount = cart.cartCount();
 	Assert.assertEquals(itemCount, "3");
@@ -31,7 +32,7 @@ public void addMultipleItems()  {
 @Test
 public void removeItemAndVerifyPrice() {
 	// add items before removal
-	CartPage cart = new CartPage(driver);
+	CartPage cart = new CartPage(WebDriverFactory.getDriver());
 	String oldText = cart.getSubTotal();
 	cart.addMultipleItems();
 	cart.waitForSubTotalchange(oldText);

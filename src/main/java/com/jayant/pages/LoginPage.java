@@ -26,34 +26,34 @@ public class LoginPage {
     private final By userProfileName =  By.className("username");
     private final By errorMessage =  By.className("api-error");
 	public void openSignIn() {
-		WaitUtils.waitForClickable(driver, SignIn).click();
-		WaitUtils.waitForVisibility(driver, loginModal);// added wait for login modal to be visible 
+		WaitUtils.waitForClickable(SignIn).click();
+		WaitUtils.waitForVisibility(loginModal);// added wait for login modal to be visible 
 		
 	}
 
 	public void selectUsername(String username) {
-		WaitUtils.waitForClickable(driver,Username_svgDropdown).click();
+		WaitUtils.waitForClickable(Username_svgDropdown).click();
 		By userOptions =  By.xpath("//div[@id='username']//div[text()='"+username+"']");
-		WaitUtils.waitForVisibility(driver,userOptions);
-		WaitUtils.waitForClickable(driver, By.xpath("//div[@id='username']//div[text()='"+username+"']")).click();
+		WaitUtils.waitForVisibility(userOptions);
+		WaitUtils.waitForClickable(By.xpath("//div[@id='username']//div[text()='"+username+"']")).click();
 	}
 	public void selectPassword(String password) {	
-		WaitUtils.waitForClickable(driver,password_svgDropdown).click();
+		WaitUtils.waitForClickable(password_svgDropdown).click();
 		By passOptions = By.xpath("(//div[normalize-space()='"+password+"'])[2]");
-		WaitUtils.waitForVisibility(driver,passOptions);
-		WaitUtils.waitForClickable(driver,By.xpath("(//div[normalize-space()='"+password+"'])[2]")).click();
+		WaitUtils.waitForVisibility(passOptions);
+		WaitUtils.waitForClickable(By.xpath("(//div[normalize-space()='"+password+"'])[2]")).click();
 				
 	}
 
 	public void login() {
-		WaitUtils.waitForClickable(driver,loginButton).click();
+		WaitUtils.waitForClickable(loginButton).click();
 	}
 	
 	public boolean userProfileIsDisplayed() {
-		return WaitUtils.waitForVisibility(driver, userProfileName).isDisplayed();
+		return WaitUtils.waitForVisibility(userProfileName).isDisplayed();
 	}
 	public boolean errorMessageIsDisplayed() {
-		return WaitUtils.waitForVisibility(driver, errorMessage).isDisplayed();
+		return WaitUtils.waitForVisibility(errorMessage).isDisplayed();
 	}
 	
 	public void performLogin(String username , String password) {
@@ -61,7 +61,7 @@ public class LoginPage {
 		selectUsername(username);
 		selectPassword(password);
 		login();
-		//logout();
+		
 	}
 	
 	

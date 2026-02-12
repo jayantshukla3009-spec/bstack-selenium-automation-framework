@@ -1,6 +1,6 @@
 package com.jayant.framework.base;
-import java.io.IOException;
-import java.util.Properties;
+
+
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -12,23 +12,20 @@ import com.jayant.framework.utils.WebDriverFactory;
 
 
 public class BaseTest {
-protected static WebDriver driver;
+
 @BeforeMethod
-protected void setUp() throws IOException {
-	Properties pro = ConfigReader.reader();
-	 driver = WebDriverFactory.createDriver(pro.getProperty("browser"));// driver initialization by loading configs
-	 driver.get(pro.getProperty("url"));
-	 driver.manage().window().maximize();
+protected void setUp() {
+     WebDriverFactory.createDriver();	
+	 WebDriverFactory.getDriver().get(ConfigReader.get("url"));
+	 WebDriverFactory.getDriver().manage().window().maximize();
 	
 }
-public static WebDriver getDriver() {
-	return driver;
+public static WebDriver getDriverFromThread() {
+	return WebDriverFactory.getDriver();
 }
 @AfterMethod
-protected void tearDown() {
-	if(driver!=null) {
-		driver.quit();
-	}
+protected static void tearDown() {
+	WebDriverFactory.quitDriver();
 }
 
 }

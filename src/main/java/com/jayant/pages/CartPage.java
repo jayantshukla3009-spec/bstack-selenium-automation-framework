@@ -28,25 +28,25 @@ public class CartPage {
 	By itemNames = By.cssSelector("p[class='title']");
 
 	public void addSingleItem() {
-		WaitUtils.waitForClickable(driver, Item_1).click();
+		WaitUtils.waitForClickable(Item_1).click();
 	}
 
 	public void addMultipleItems() {
-		WaitUtils.waitForClickable(driver, Item_1).click();
-		WaitUtils.waitForClickable(driver, Item_2).click();
-		WebElement item3 = WaitUtils.waitForClickable(driver, Item_3);
+		WaitUtils.waitForClickable(Item_1).click();
+		WaitUtils.waitForClickable(Item_2).click();
+		WebElement item3 = WaitUtils.waitForClickable(Item_3);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", item3);
 
 	}
 
 	public String cartCount() {
-		return WaitUtils.waitForVisibility(driver, ItemCount).getText();
+		return WaitUtils.waitForVisibility(ItemCount).getText();
 	}
     public boolean isCartCountDisplayed() {
-    	return WaitUtils.waitForVisibility(driver, ItemCount).isDisplayed();
+    	return WaitUtils.waitForVisibility(ItemCount).isDisplayed();
     }
 	public void removeCartItems() {
-		WaitUtils.waitForClickable(driver, removeItem).click();
+		WaitUtils.waitForClickable(removeItem).click();
 	}
 
 	public double PriceVarifiction() {
@@ -82,7 +82,7 @@ public class CartPage {
 	
 	public void waitForSubTotalchange(String oldSubTotal) {
 		
-		WaitUtils.waitForTextChange(driver, cartSubTotal, oldSubTotal);
+		WaitUtils.waitForTextChange(cartSubTotal, oldSubTotal);
 	}
 	
 	public List<String> verifyCartItems(){
