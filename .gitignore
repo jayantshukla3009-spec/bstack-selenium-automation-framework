@@ -1,10 +1,12 @@
-       .classpath
-        .project
-        .settings/
-        target/
+.classpath
+.project
+.settings/
+target/
 test-output/
+ExtentReports/
 Receipts/
 
+*.class
 *.log
 *.tmp
 *.crdownload
