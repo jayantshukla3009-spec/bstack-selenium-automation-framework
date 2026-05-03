@@ -15,8 +15,8 @@ public class BaseTest {
 
 @BeforeMethod
 protected void setUp() {
-     WebDriverFactory.createDriver();	
-	 WebDriverFactory.getDriver().get(ConfigReader.get("url"));
+     WebDriverFactory.createDriver();//This creates driver and stores it in ThreadLocal.	
+	 WebDriverFactory.getDriver().get(ConfigReader.get("url")); //getDriver() retrieves the thread-specific WebDriver
 	 WebDriverFactory.getDriver().manage().window().maximize();
 	
 }

@@ -3,10 +3,10 @@ package com.jayant.tests;
 
 import org.testng.Assert;
 
+
 import org.testng.annotations.Test;
 
 import com.jayant.framework.base.BaseTest;
-import com.jayant.framework.utils.WebDriverFactory;
 import com.jayant.pages.CartPage;
 import com.jayant.pages.CheckOutPage;
 import com.jayant.pages.LoginPage;
@@ -16,14 +16,14 @@ import com.jayant.pages.ProductPage;
 public class CheckOutTest extends BaseTest {
 @Test
 public void validCheckOutFlow() {
-	LoginPage login = new LoginPage(WebDriverFactory.getDriver());
+	LoginPage login = new LoginPage();
 	login.performLogin("demouser","testingisfun99");
-	CartPage cart = new CartPage(WebDriverFactory.getDriver());
+	CartPage cart = new CartPage();
 	Assert.assertTrue(cart.isCartCountDisplayed());
 	String oldText = cart.getSubTotal();
 	cart.addMultipleItems();
 	cart.waitForSubTotalchange(oldText);
-	CheckOutPage checkOut = new CheckOutPage(WebDriverFactory.getDriver());
+	CheckOutPage checkOut = new CheckOutPage();
 	checkOut.clickCheckOut();
 	Assert.assertTrue(checkOut.isOrderSummaryDisplayed());// verify order summary page is displayed
 	checkOut.firstName("tester");
@@ -43,15 +43,15 @@ public void validCheckOutFlow() {
 
 @Test
 public void InvalidCheckOutFlow() {
-	LoginPage login = new LoginPage(WebDriverFactory.getDriver());
+	LoginPage login = new LoginPage();
 	login.performLogin("demouser","testingisfun99");
-	CartPage cart = new CartPage(WebDriverFactory.getDriver());
-	CheckOutPage checkOut = new CheckOutPage(WebDriverFactory.getDriver());
+	CartPage cart = new CartPage();
+	CheckOutPage checkOut = new CheckOutPage();
 	checkOut.openCart();
 	Assert.assertEquals(cart.cartCount(), "0"); // verify cart is empty 
 	Assert.assertFalse(checkOut.checkOutButtonIsDisplayed()); // checkout button is not displayed
 	checkOut.cartContinueShopping();// click continue shopping button in cart
-	ProductPage product = new ProductPage(WebDriverFactory.getDriver());
+	ProductPage product = new ProductPage();
 	Assert.assertTrue(product.itemsList(),"Items list not displayed");// confirm user is back to the shopping page
 	
 }

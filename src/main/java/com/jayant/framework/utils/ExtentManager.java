@@ -10,7 +10,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentManager {
 	private static ExtentReports extent;
 	private static ThreadLocal<ExtentTest>test = new ThreadLocal<>();
-public static ExtentReports getReport() {
+public static synchronized ExtentReports getReport() {
 	if(extent==null) {
 	File f1 = new File(System.getProperty("user.dir")+"/ExtentReports/Bstack_Auto_"+(System.currentTimeMillis()%10000)+".html");
 	

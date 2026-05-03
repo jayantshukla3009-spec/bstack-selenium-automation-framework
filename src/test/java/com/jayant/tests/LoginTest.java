@@ -1,10 +1,10 @@
 package com.jayant.tests;
 import org.testng.Assert;
 
+
 import org.testng.annotations.Test;
 
 import com.jayant.framework.base.BaseTest;
-import com.jayant.framework.utils.WebDriverFactory;
 import com.jayant.pages.LoginPage;
 import com.jayant.testdata.LoginTestData;
 
@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest{
 	
 	@Test(dataProviderClass = LoginTestData.class ,dataProvider = "loginCredentials")
 	public void loginTest(String username , String password , String output) {
-		LoginPage login =  new LoginPage(WebDriverFactory.getDriver());
+		LoginPage login = new LoginPage();
 		if(output.equalsIgnoreCase("blank")) {
 			login.openSignIn();
 			login.login();

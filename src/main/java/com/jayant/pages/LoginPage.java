@@ -1,19 +1,13 @@
 package com.jayant.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 import com.jayant.framework.utils.WaitUtils;
 
 public class LoginPage {
 
-	private final WebDriver driver;
 	
-
-	public LoginPage(WebDriver driver) {
-		this.driver = driver;
-		
-	}
 
 	
 

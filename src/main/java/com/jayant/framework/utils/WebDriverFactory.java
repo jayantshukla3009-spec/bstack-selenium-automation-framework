@@ -31,7 +31,7 @@ public static void createDriver() {
          ChromeOptions options = new ChromeOptions();
          options.setExperimentalOption("prefs", prefs);
 
-         driver.set(new ChromeDriver());
+         driver.set(new ChromeDriver());//stores the WebDriver instance specific to that thread
 	}else if(browser.equalsIgnoreCase("edge")) {
 		WebDriverManager.edgedriver().setup();
 		driver.set(new EdgeDriver());
@@ -41,7 +41,7 @@ public static void createDriver() {
 		
 }
 public static WebDriver getDriver() {
-	return driver.get();
+	return driver.get(); //retrieves the WebDriver instance stored for the current thread
 }
 public static void quitDriver() {
 	if(getDriver()!=null) {

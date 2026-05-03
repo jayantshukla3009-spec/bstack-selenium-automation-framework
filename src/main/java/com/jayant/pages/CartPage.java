@@ -1,21 +1,18 @@
 package com.jayant.pages;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.jayant.framework.utils.WaitUtils;
+import com.jayant.framework.utils.WebDriverFactory;
 
 public class CartPage {
-	private final WebDriver driver;
-
-	public CartPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	private final By Item_1 = By.xpath("//div[@id='1']//div[4]");
 	private final By Item_2 = By.xpath("//div[@id='2']//div[4]");
@@ -35,7 +32,7 @@ public class CartPage {
 		WaitUtils.waitForClickable(Item_1).click();
 		WaitUtils.waitForClickable(Item_2).click();
 		WebElement item3 = WaitUtils.waitForClickable(Item_3);
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", item3);
+		((JavascriptExecutor)WebDriverFactory.getDriver()).executeScript("arguments[0].click();", item3);
 
 	}
 
@@ -51,7 +48,7 @@ public class CartPage {
 
 	public double PriceVarifiction() {
 
-		List<WebElement> priceList = driver.findElements(itemPrices);
+		List<WebElement> priceList = WebDriverFactory.getDriver().findElements(itemPrices);
 		double ItemTotal;
 		double Total = 0;// start totaling from 0 each time method runs
 		for (int i = 0; i < priceList.size(); i++) {
@@ -67,14 +64,14 @@ public class CartPage {
 	}
 
 	public String getSubTotal() {//returns string to compare with older one
-		return driver.findElement(cartSubTotal).getText();
+		return WebDriverFactory.getDriver().findElement(cartSubTotal).getText();
 		 
 
 	}
 
 	public double cartSubTotalAmount() { // returns the cart sub total to verify
 
-		String subTotalAmount = driver.findElement(cartSubTotal).getText();
+		String subTotalAmount = WebDriverFactory.getDriver().findElement(cartSubTotal).getText();
 		subTotalAmount = subTotalAmount.replaceAll("[^0-9.]", "").trim();
 		return Double.parseDouble(subTotalAmount);
 
@@ -87,7 +84,7 @@ public class CartPage {
 	
 	public List<String> verifyCartItems(){
 		List<String> cartItems = new ArrayList<>();
-		List<WebElement> itemList = driver.findElements(itemNames);
+		List<WebElement> itemList = WebDriverFactory.getDriver().findElements(itemNames);
 		for(WebElement item : itemList) {
 			cartItems.add(item.getText());
 		}

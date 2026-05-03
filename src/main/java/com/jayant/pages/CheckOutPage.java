@@ -1,20 +1,17 @@
 package com.jayant.pages;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.jayant.framework.utils.WaitUtils;
+import com.jayant.framework.utils.WebDriverFactory;
 
 public class CheckOutPage {
-	private final WebDriver driver;
-
-	public CheckOutPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	private final By checkOutButton = By.xpath("//div[contains(text(),'Checkout')]");
 	private final By orderSummaryTitle = By.xpath("//h3[normalize-space()='Order Summary']");
@@ -39,7 +36,7 @@ public class CheckOutPage {
 		WaitUtils.waitForClickable(checkOutButton).click();
 	}
 	public boolean checkOutButtonIsDisplayed() {
-		List<WebElement> elements = driver.findElements(checkOutButton);
+		List<WebElement> elements = WebDriverFactory.getDriver().findElements(checkOutButton);
 		return elements.size() > 0; 
 	}
 
@@ -69,7 +66,7 @@ public class CheckOutPage {
 
 	public List<String> getOrderSummaryItem() {
 		List<String> summaryItem = new ArrayList<>();
-		List<WebElement> orderSummaryItem = driver.findElements(orderSummaryitems);
+		List<WebElement> orderSummaryItem = WebDriverFactory.getDriver().findElements(orderSummaryitems);
 		for (WebElement item : orderSummaryItem) {
 			summaryItem.add(item.getText());
 		}
