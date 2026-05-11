@@ -1,6 +1,8 @@
 package com.jayant.framework.utils;
 
 import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,4 +28,8 @@ public class WaitUtils {
 		WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), Duration.ofSeconds(waitTime));
 		return wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, oldText)));
 	}
+	public static List<WebElement> waitForVisibilityOfAll(By locator) {
+        WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), Duration.ofSeconds(waitTime));
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
 }
